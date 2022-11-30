@@ -1,6 +1,6 @@
 <template>
-  <div id="contact">
-    Contact
+  <div id="projects">
+    TBD
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 
 
 export default {
-  name: "ContactView",
+  name: "ProjectsView",
   mounted() {
   }
 };

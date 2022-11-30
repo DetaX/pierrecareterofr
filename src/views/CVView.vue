@@ -1,12 +1,13 @@
 <template>
   <div id="cv">
-    <div id="experiences">
-      <Work
+    <Work
         id="work"
         :view-box.camel="workViewBox"
-      />
+    />
+    <div id="experiences">
+
       <div class="block-title">
-        Expériences professionelles
+        Expériences professionnelles
       </div>
       <div class="experience">
         <div class="date">
@@ -16,7 +17,7 @@
           Rue des écoles
         </div>
         <div class="description">
-          ...
+          En charge du développement d'applications web ou mobiles ainsi que de la gestion du parc interne et externe de serveurs
         </div>
       </div>
       <div class="experience">
@@ -65,7 +66,7 @@
           Baccalauréat Scientifique, option Sciences de l'Ingénieur, <i>Mention AB</i>
         </div>
         <div class="description">
-          Lycée St-Cric
+          Lycée St-Cricq
         </div>
       </div>
     </div>
@@ -78,7 +79,7 @@
           Développement
         </div>
         <div class="description">
-          Java, Java EE, Python, C++, Android, C, PHP, JavaScript, HTML, CSS, XML, XSLT, OpenGL, SQL, Scheme, Assembleur
+          Java, Java EE, Python, C++, Android, C, PHP, JavaScript, HTML, CSS, SCSS, XML, XSLT, OpenGL, SQL, Scheme, Assembleur
         </div>
       </div>
       <div class="skill">
@@ -157,10 +158,10 @@
 
 <script>
 import {gsap} from "gsap";
-import Work from "../svgs/work.svg"
+import Work from "../assets/svgs/work.svg"
 
 export default {
-  name: "CV",
+  name: "CVView",
   components: {
     Work
   },
@@ -172,7 +173,6 @@ export default {
   mounted() {
     let tl = gsap.timeline();
     tl.to("#particles", {duration: 1, height: "50vh"})
-      .to("#text", {duration: 1, y: "25vh"},0)
     ;
     setTimeout(function() {document.querySelector('#cv').classList.add('loaded');}, 100);
   }
@@ -180,13 +180,28 @@ export default {
 </script>
 
 <style lang="scss">
+
   #cv {
+    position: relative;
     & > div {
       padding-right: 20px;
       padding-left: 20px;
     }
     &.loaded .block-title:after {
       width: 100%;
+    }
+  }
+  #work {
+    position: absolute;
+    right: 0;
+    top:0;
+    opacity: .1;
+    z-index: -1;
+    transform: rotateY(180deg);
+
+    @media (min-width: 768px) {
+      max-width: 50vw ;
+      max-height: calc(100vh - 75px);
     }
   }
   .block-title {
