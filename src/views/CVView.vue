@@ -11,13 +11,22 @@
       </div>
       <div class="experience">
         <div class="date">
+          janvier 2021 - aujourd'hui
+        </div>
+        <div class="title">
+          Freelance
+        </div>
+
+      </div>
+      <div class="experience">
+        <div class="date">
           octobre 2015 - aujourd'hui
         </div>
         <div class="title">
           Rue des écoles
         </div>
         <div class="description">
-          En charge du développement d'applications web ou mobiles ainsi que de la gestion du parc interne et externe de serveurs
+          En charge du développement d'applications web ou mobiles ainsi que de la gestion du parc interne et externe de serveurs dédiés
         </div>
       </div>
       <div class="experience">
@@ -66,7 +75,7 @@
           Baccalauréat Scientifique, option Sciences de l'Ingénieur, <i>Mention AB</i>
         </div>
         <div class="description">
-          Lycée St-Cricq
+          Lycée Saint-Cricq
         </div>
       </div>
     </div>
@@ -76,10 +85,18 @@
       </div>
       <div class="skill">
         <div class="title">
-          Développement
+          Langages
         </div>
         <div class="description">
-          Java, Java EE, Python, C++, Android, C, PHP, JavaScript, HTML, CSS, SCSS, XML, XSLT, OpenGL, SQL, Scheme, Assembleur
+          PHP, SQL, JavaScript, HTML, CSS, SCSS, Java, Java EE, Python, C++, C, XML, XSLT, OpenGL, Scheme, Assembleur
+        </div>
+      </div>
+      <div class="skill">
+        <div class="title">
+          Cadriciels/CMS
+        </div>
+        <div class="description">
+          Symfony, Vue.js, Wordpress, Android, Magento, Jelix
         </div>
       </div>
       <div class="skill">
@@ -87,7 +104,7 @@
           Outils
         </div>
         <div class="description">
-          UML/OCL, SysML, Merise, Git, LaTeX
+          Git, Subversion, LaTeX, UML/OCL, SysML, Merise
         </div>
       </div>
       <div class="skill">
@@ -100,10 +117,10 @@
       </div>
       <div class="skill">
         <div class="title">
-          Divers
+          Virtualisation
         </div>
         <div class="description">
-          IA, Virtualisation(VMware)
+          VMware, Proxmox, Docker, LXC
         </div>
       </div>
       <div class="skill">
@@ -111,13 +128,13 @@
           Système d'exploitation
         </div>
         <div class="description">
-          Windows, Linux
+          Linux, Windows
         </div>
       </div>
     </div>
     <div id="languages">
       <div class="block-title">
-        Langages
+        Langues
       </div>
       <div class="language">
         <div class="title">
@@ -145,12 +162,6 @@
         <div class="description">
           Notions
         </div>
-      </div>
-    </div>
-
-    <div id="hobbies">
-      <div class="block-title">
-        Centres d'intérêts
       </div>
     </div>
   </div>
@@ -184,12 +195,12 @@ export default {
   #cv {
     position: relative;
     & > div {
-      padding-right: 20px;
-      padding-left: 20px;
+      padding: 0 2rem;
     }
     &.loaded .block-title:after {
       width: 100%;
     }
+    padding-bottom: 1rem;
   }
   #work {
     position: absolute;

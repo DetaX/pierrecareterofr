@@ -1,19 +1,27 @@
 <template>
   <main :class="$route.name">
     <div id="particles" class="particles">
-      <span id="text" >Je développe votre site web</span>
-    </div>
-    <nav>
-      <span>
-        <router-link to="/"> À propos </router-link>
-      </span>
-      <span>
-        <router-link to="/cv"> CV </router-link>
-      </span>
+
+      <router-link to="/" class="title_wrapper">
+        <img src="/assets/picture.jpg" alt="Photo" />
+        <span class="title">Pierre Caretero</span>
+        <span class="subtitle">Consultant informatique spécialiste du web</span>
+      </router-link>
+<!--      <span id="text" >Je développe votre site web</span>-->
+      <nav id="navbar">
       <span>
         <router-link to="/projets"> Projets </router-link>
       </span>
-    </nav>
+        <span>
+        <router-link to="/cv"> CV </router-link>
+      </span>
+    <span>
+      <a href="https://github.com/DetaX/pierrecareterofr" id="github" title="Code du site">
+        <Github fill="#cecece" />
+      </a>
+    </span>
+      </nav>
+    </div>
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component" class="left" />
@@ -25,11 +33,14 @@
 <script>
 import { Power3, gsap } from "gsap";
 import { color1 } from "./variables";
-
+import Github from "@/assets/svgs/github.svg";
 import Typewriter from "typewriter-effect/dist/core";
 
 export default {
   name: "App",
+  components: {
+    Github
+  },
   mounted() {
     window.particlesJS.load(
       "particles",
@@ -49,20 +60,19 @@ export default {
       background: color1,
       ease: Power3.easeOut,
     }).to("nav", { duration: 3, x: 0, ease: "elastic" }, "-=2");
-    let text = document.getElementById("text");
-    let typewriter = new Typewriter(text, {});
 
-    typewriter
-      .changeDelay(10)
-      .typeString(
-        "Je conçois et développe des applications et sites web responsive de A à Z."
-      )
-      .pauseFor(1000)
-      .typeString(
-        "<br>Un projet ? <a href='mailto:contact@pierrecaretero.fr'>Contactez moi</a>, le devis est gratuit !"
-      )
-      .pauseFor(5000)
-      .start();
+    window.onscroll = function() {myFunction()};
+
+    let navbar = document.getElementById("navbar");
+    let sticky = navbar.offsetTop;
+    function myFunction() {
+      if (navbar.offsetTop > 0) sticky = navbar.offsetTop;
+      if (window.scrollY >= sticky) {
+        navbar.classList.add("sticky")
+      } else {
+        navbar.classList.remove("sticky");
+      }
+    }
   },
 };
 </script>
@@ -98,6 +108,15 @@ html {
 body {
   margin: 0;
 }
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
 main {
   width: 100%;
   background: #fff;
@@ -118,34 +137,60 @@ main {
 }
 #particles {
   background: #fff;
-  height: 100vh;
+  height: 50vh;
   flex-grow: 1;
   text-align: center;
   width: 100%;
-  z-index: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  position: relative;
   canvas {
     z-index: -1;
   }
-
 }
+
 .particles-js-canvas-el {
   position: absolute;
   left: 0;
 }
-nav {
-  position: absolute;
-  right: 25px;
-  top: 25px;
-  z-index: 2;
-  transform: translateX(calc(100% + 25px));
+.title_wrapper {
   display: flex;
   flex-direction: column;
-  text-align: right;
+  text-align: center;
+  margin-bottom: 53px;
+  color: #000;
+  outline: none;
+  .title {
+    margin-top: .75rem;
+  }
+  .subtitle {
+    font-size: .75rem;
+  }
+  img {
+    max-width: 15%;
+    min-width: 100px;
+    border-radius: 50%;
+    margin: auto;
+  }
+}
+nav {
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  background: rgb(0 0 0 / 20%);
+  justify-content: space-evenly;
+  width: 100%;
+  height: 53px;
+  &.sticky {
+    background: rgb(108 135 155);
+  }
   span {
-    margin-bottom: 1rem;
+    padding: 1rem;
   }
   a {
-    margin: 5px;
     &:hover {
       color: #000;
       position: relative;
@@ -154,14 +199,7 @@ nav {
         transition: width 0.5s;
       }
     }
-    &:after {
-      content: "";
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      border-bottom: 2px solid black;
-    }
+
   }
 }
 a {
@@ -170,23 +208,7 @@ a {
   font-size: 1.2rem;
 }
 
-#text {
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(calc(-50vh - 100%));
-  text-align: center;
-  padding: 3rem;
-  font-size: 1rem;
-  line-height: 1.4rem;
-  transition: transform 2s, opacity 2s;
-  a {
-    font-size: 1rem;
-    color: inherit;
-    text-decoration: underline;
-  }
-}
+
 .fade-leave-active {
   transition-duration: 0.3s;
   transition-property: opacity;
@@ -207,7 +229,7 @@ a {
     height: 100vh;
     margin-top: 75px;
     & > *:last-child {
-      margin-bottom: 75px;
+      margin-bottom: 90px;
     }
   }
   html {
@@ -216,11 +238,39 @@ a {
   a {
     font-size: 1.4rem;
   }
+  .title_wrapper {
+    margin-bottom: 0;
+  }
   nav {
-    flex-direction: row;
-    text-align: center;
+    top: 25px;
+    bottom: revert;
+    background: none;
+    right: -100%;
+    justify-content: flex-end;
+    align-items: center;
+    span {
+      padding: 0.25rem;
+    }
+    a#github {
+      &:hover {
+        svg {
+          fill: #000;
+        }
+      }
+      &:after {
+        content: none;
+      }
+    }
     a {
       margin: 15px;
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        border-bottom: 2px solid black;
+      }
     }
   }
   #particles {
@@ -229,11 +279,7 @@ a {
   ::-webkit-scrollbar {
     width: 5px;
   }
-  #text {
-    width: calc(50vw - 6rem);
-    opacity: 1;
-    transform: translateY(-50%);
-  }
+
   ::-webkit-scrollbar-track {
     background: #fff;
   }
