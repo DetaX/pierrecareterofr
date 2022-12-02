@@ -2,11 +2,11 @@
   <main :class="$route.name">
     <div id="particles" class="particles">
 
-      <router-link to="/" class="title_wrapper">
-        <img src="/assets/picture.jpg" alt="Photo" />
-        <span class="title">Pierre Caretero</span>
-        <span class="subtitle">Consultant informatique spécialiste du web</span>
-      </router-link>
+      <div class="title_wrapper">
+        <router-link to="/"><img src="/assets/picture.jpg" alt="Photo" /></router-link>
+        <router-link to="/"><span class="title">Pierre Caretero</span></router-link>
+        <router-link to="/"><span class="subtitle">Consultant informatique spécialiste du web</span></router-link>
+      </div>
 <!--      <span id="text" >Je développe votre site web</span>-->
       <nav id="navbar">
       <span>
@@ -34,7 +34,6 @@
 import { Power3, gsap } from "gsap";
 import { color1 } from "./variables";
 import Github from "@/assets/svgs/github.svg";
-import Typewriter from "typewriter-effect/dist/core";
 
 export default {
   name: "App",
@@ -159,19 +158,26 @@ main {
   flex-direction: column;
   text-align: center;
   margin-bottom: 53px;
-  color: #000;
+
   outline: none;
   .title {
-    margin-top: .75rem;
+    display: flex;
+    margin: .75rem auto 0;
   }
   .subtitle {
     font-size: .75rem;
+    display: flex;
+    margin: auto;
   }
   img {
     max-width: 15%;
     min-width: 100px;
     border-radius: 50%;
     margin: auto;
+  }
+  a {
+    color: #000;
+    display: contents;
   }
 }
 nav {

@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "echo 'www.pierrecaretero.fr' > ./dist/CNAME  && gh-pages -d dist",
+    "deploy": "cp ./dist/index.html ./dist/404.html && echo 'www.pierrecaretero.fr' > ./dist/CNAME  && gh-pages -d dist",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {

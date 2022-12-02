@@ -15,8 +15,7 @@
 </template>
 
 <script>
-import { Power3, gsap } from "gsap";
-import { color1, color2 } from "@/variables";
+import { gsap } from "gsap";
 import Profile from "@/assets/svgs/profile.svg";
 import Programming from "@/assets/svgs/programming.svg";
 import Typewriter from "typewriter-effect/dist/core";
