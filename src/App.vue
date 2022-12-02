@@ -16,7 +16,7 @@
         <router-link to="/cv"> CV </router-link>
       </span>
     <span>
-      <a href="https://github.com/DetaX/pierrecareterofr" id="github" title="Code du site">
+      <a href="https://github.com/DetaX/pierrecareterofr" id="github" title="Voir le code sur Github">
         <Github fill="#cecece" />
       </a>
     </span>
@@ -58,7 +58,7 @@ export default {
       duration: 2,
       background: color1,
       ease: Power3.easeOut,
-    }).to("nav", { duration: 3, x: 0, ease: "elastic" }, "-=2");
+    });
 
     window.onscroll = function() {myFunction()};
 
@@ -137,6 +137,7 @@ main {
 #particles {
   background: #fff;
   height: 50vh;
+  min-height: 250px;
   flex-grow: 1;
   text-align: center;
   width: 100%;
@@ -163,9 +164,10 @@ main {
   .title {
     display: flex;
     margin: .75rem auto 0;
+    font-size: 1.6rem
   }
   .subtitle {
-    font-size: .75rem;
+    font-size: 1rem;
     display: flex;
     margin: auto;
   }

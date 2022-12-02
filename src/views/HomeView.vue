@@ -16,19 +16,16 @@
 
 <script>
 import { gsap } from "gsap";
-import Profile from "@/assets/svgs/profile.svg";
 import Programming from "@/assets/svgs/programming.svg";
 import Typewriter from "typewriter-effect/dist/core";
 
 export default {
   name: "HomeView",
   components: {
-    Profile,
     Programming,
   },
   data() {
     return {
-      profileViewBox: "0 0 698 698",
       programmingViewBox: "0 0 1041.32 554.17",
     };
   },
@@ -36,7 +33,6 @@ export default {
     let tl = gsap.timeline();
     tl
       .to("#presentation", { duration: 2, opacity: 1 }, 0)
-      .to("#profile-container", { duration: 2, opacity: 1 }, "-=2")
       .to(
         "#programming",
         { duration: 2, opacity: 1, x: 0, ease: "elastic" },

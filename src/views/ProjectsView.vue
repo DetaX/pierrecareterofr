@@ -1,5 +1,6 @@
 <template>
   <div id="projects">
+    <div class="contact">Votre projet ici ? Demandez un devis gratuitement par e-mail à <a href="mailto:contact@pierrecaretero.fr">contact@pierrecaretero.fr</a>.</div>
     <div class="project">
       <div class="text-container">
         <div class="title">Frogged TV</div>
@@ -26,38 +27,73 @@
       </div>
       <a href="https://martyna.fr" title="Visiter le site"><img src="/assets/martyna.png" alt="Les trouvailles de Martyna" /></a>
     </div>
-
-
   </div>
 </template>
 
 <script>
 
 
+import {gsap, Power3} from "gsap";
+
 export default {
   name: "ProjectsView",
   mounted() {
+    let tl = gsap.timeline();
+    tl.fromTo(".text-container", {opacity: 0}, { duration: 2, opacity: 1 }, 0)
+        .fromTo(".project img",  {opacity: 0}, {
+      duration: 1,
+      opacity: 1,
+      ease: Power3.easeIn
+    }, "=-2")
   }
 };
 </script>
 
 <style lang="scss">
   #projects {
+    .contact {
+      padding: 2rem;
+      text-align: center;
+      background: #393d3f;
+      color: #fff;
+      margin-top: 1rem;
+      a {
+        font-size: 1rem;
+        color: #E07A5F;
+      }
+    }
+    .technologies {
+      font-size: .8rem;
+      margin-top: .25rem;
+    }
+    .description {
+      margin-top: 0.5rem;
+    }
     .project {
       display: flex;
       background: #f9f9f9;
       margin-top: 2rem;
       flex-direction: column;
+      transition: all .15s;
+      .title {
+        font-size: 1.4rem;
+      }
     }
     a {
       display: contents;
     }
     .text-container {
       padding: 2rem;
+      opacity: 0;
     }
     img {
       max-width: 350px;
       margin: 0 auto;
+      transition: filter .25s;
+      opacity: 0;
+      &:hover {
+        filter: grayscale(1);
+      }
     }
   }
   @media(min-width: 1280px) {
