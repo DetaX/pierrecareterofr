@@ -59,10 +59,10 @@ export default {
         let currentSrc = img.getAttribute('data-current-src');
         let sources = img.getAttribute('data-src').split(',');
         let nextSrc = (++currentSrc)% sources.length;
-        tl.to(img, {duration: 0.75, opacity: 0.05, onComplete: function() {
+        tl.to(img, {duration: 0.75, opacity: 0.05, ease: Power3.easeInOut, onComplete: function() {
             img.setAttribute('data-current-src', nextSrc);
             img.src = "/assets/"+sources[nextSrc].trim()+".png";
-            tl.to(img, { duration: 0.75, opacity: 1 } );
+            tl.to(img, { duration: 0.75, ease: Power3.easeOut, opacity: 1 } );
           } })
 
 

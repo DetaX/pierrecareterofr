@@ -182,9 +182,6 @@ export default {
     }
   },
   mounted() {
-    let tl = gsap.timeline();
-    tl.to("#particles", {duration: 1, height: "50vh"})
-    ;
     setTimeout(function() {document.querySelector('#cv').classList.add('loaded');}, 100);
   }
 };
