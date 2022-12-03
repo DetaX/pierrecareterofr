@@ -3,9 +3,18 @@
     <div class="contact">Votre projet ici ? Demandez un devis gratuitement par e-mail à <a href="mailto:contact@pierrecaretero.fr">contact@pierrecaretero.fr</a>.</div>
     <div class="project">
       <div class="text-container">
+        <div class="title">PhasmoTools</div>
+        <div class="technologies">Développement Vue.Js</div>
+        <div class="description">Divers outils pour le jeu Phasmophobia (configurateur de difficulté à partager, système de preuve du jeu, ...).</div>
+      </div>
+      <a href="https://phasmo.detax.eu" title="Visiter le site"><img src="/assets/phasmotools.png" alt="PhasmoTools" data-src="phasmotools, phasmotools1" data-current-src=0 /></a>
+    </div>
+
+    <div class="project">
+      <div class="text-container">
         <div class="title">Frogged TV</div>
         <div class="technologies">Développement Symfony + Hébergement</div>
-        <div class="description">FroggedTV est une association tourner autour du jeu vidéo Dota 2. Ils commentent sur Twitch les compétitions officiels et organisent aussi une ligue francophone</div>
+        <div class="description">FroggedTV est une association tourner autour du jeu vidéo Dota 2. Ils commentent sur Twitch les compétitions officiels et organisent aussi une ligue francophone.</div>
       </div>
       <a href="https://frogged.tv" title="Visiter le site"><img src="/assets/froggedtv.png" alt="FroggedTV" /></a>
     </div>
@@ -44,7 +53,21 @@ export default {
       duration: 1,
       opacity: 1,
       ease: Power3.easeIn
-    }, "=-2")
+    }, "=-2");
+    document.querySelectorAll('img[data-src]').forEach(function(img) {
+      setInterval(function(){
+        let currentSrc = img.getAttribute('data-current-src');
+        let sources = img.getAttribute('data-src').split(',');
+        let nextSrc = (++currentSrc)% sources.length;
+        tl.to(img, {duration: 0.75, opacity: 0.05, onComplete: function() {
+            img.setAttribute('data-current-src', nextSrc);
+            img.src = "/assets/"+sources[nextSrc].trim()+".png";
+            tl.to(img, { duration: 0.75, opacity: 1 } );
+          } })
+
+
+      }, 5000);
+    })
   }
 };
 </script>
@@ -100,7 +123,7 @@ export default {
     #projects {
       .project {
         flex-direction: row;
-        &:nth-child(even) {
+        &:nth-child(odd) {
           flex-direction: row-reverse;
         }
       }

@@ -113,9 +113,6 @@ body {
   width: 100%;
 }
 
-.sticky + .content {
-  padding-top: 60px;
-}
 main {
   width: 100%;
   background: #fff;
