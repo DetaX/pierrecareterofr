@@ -35,7 +35,7 @@ export default {
       .to("#presentation", { duration: 2, opacity: 1 }, 0)
       .to(
         "#programming",
-        { duration: 2, opacity: 1, x: 0, ease: "elastic" },
+        { duration: 2, opacity: 1},
         "-=2"
       )
       .to("#programming", { duration: 20, scale: 1.25, y: 50 }, "-=1");
@@ -82,13 +82,13 @@ export default {
 }
 #text a {
   font-size: 1rem;
-  color: #000;
+  color: var(--text-primary-color);
+  transition: color .3s ease;
   text-decoration: underline;
 }
 #programming {
   opacity: 0;
   max-height: 50vh;
-  transform: translateX(-50vh);
 }
 .home #text {
   opacity: 1;

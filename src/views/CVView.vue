@@ -168,7 +168,6 @@
 </template>
 
 <script>
-import {gsap} from "gsap";
 import Work from "../assets/svgs/work.svg"
 
 export default {
@@ -188,7 +187,12 @@ export default {
 </script>
 
 <style lang="scss">
-
+:root {
+  --work-opacity: 0.1;
+}
+:root.dark-theme {
+  --work-opacity: 0.05;
+}
   #cv {
     position: relative;
     & > div {
@@ -203,7 +207,7 @@ export default {
     position: absolute;
     right: 0;
     top:0;
-    opacity: .1;
+    opacity: var(--work-opacity);
     z-index: -1;
     transform: rotateY(180deg);
 
@@ -221,10 +225,10 @@ export default {
     position: relative;
     &:after {
       -webkit-transition: width 1s;
-      transition: width 1s;
+      transition: width 1s, border-bottom-color .3s ease;
       content: '';
       width: 0;
-      border-bottom: 5px solid #8DA9C4;
+      border-bottom: 5px solid var(--particles-color);
       position: absolute;
       bottom: -5px;
       left: 0;
@@ -234,12 +238,12 @@ export default {
     margin-top: 10px;
   }
   .title {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     line-height: 1.5rem;
   }
   .date {
     line-height: 1.5rem;
-    color: #cacaca;
+    color: var(--text-secondary-color);
   }
   .description {
     font-size: 0.9rem;

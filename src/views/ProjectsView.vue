@@ -77,8 +77,9 @@ export default {
     .contact {
       padding: 2rem;
       text-align: center;
-      background: #393d3f;
-      color: #fff;
+      transition: background-color .3s ease, color .3s ease;
+      background: var(--background-color-secondary);
+      color: var(--text-primary-color);
       margin-top: 1rem;
       a {
         font-size: 1rem;
@@ -94,7 +95,7 @@ export default {
     }
     .project {
       display: flex;
-      background: #f9f9f9;
+      background: var(--background-color-secondary);
       margin-top: 2rem;
       flex-direction: column;
       transition: all .15s;

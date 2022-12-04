@@ -1,15 +1,15 @@
 <template>
   <main :class="$route.name">
     <div id="particles" class="particles">
-
       <div class="title_wrapper">
         <router-link to="/"><img src="/assets/picture.jpg" alt="Photo" /></router-link>
         <router-link to="/"><span class="title">Pierre Caretero</span></router-link>
         <router-link to="/"><span class="subtitle">Consultant informatique spécialiste du web</span></router-link>
       </div>
-<!--      <span id="text" >Je développe votre site web</span>-->
       <nav id="navbar">
-      <span>
+        <theme-button id="theme_buttton" />
+
+        <span>
         <router-link to="/projets"> Projets </router-link>
       </span>
         <span>
@@ -17,7 +17,7 @@
       </span>
     <span>
       <a href="https://github.com/DetaX/pierrecareterofr" id="github" title="Voir le code sur Github">
-        <Github fill="#cecece" />
+        <Github />
       </a>
     </span>
       </nav>
@@ -31,14 +31,14 @@
 </template>
 
 <script>
-import { Power3, gsap } from "gsap";
-import { color1 } from "./variables";
 import Github from "@/assets/svgs/github.svg";
+import ThemeButton from "@/components/ThemeButton.vue";
 
 export default {
   name: "App",
   components: {
-    Github
+    Github,
+    ThemeButton
   },
   mounted() {
     window.particlesJS.load(
@@ -53,12 +53,6 @@ export default {
         window.scrollTo(0, 0);
       w = window.outerWidth;
     };
-    let tl = gsap.timeline();
-    tl.to("#particles", {
-      duration: 2,
-      background: color1,
-      ease: Power3.easeOut,
-    });
 
     window.onscroll = function() {myFunction()};
 
@@ -101,6 +95,29 @@ export default {
     U+FEFF, U+FFFD;
 }
 
+:root {
+  --background-color-primary: #fff;
+  --background-color-secondary: #f9f9f9;
+  --text-primary-color: #222;
+  --text-secondary-color: #6b6b6b;
+  --particles-color: #8DA9C4;
+  --nav-default-color: #cecece;
+  --nav-active-color: #000;
+  --nav-mobile-color: #6c879b;
+  --element-size: 3rem;
+}
+
+:root.dark-theme {
+  --background-color-primary: #1f2329;
+  --background-color-secondary: #181c22;
+  --text-primary-color: #ddd;
+  --text-secondary-color: #6b6b6b;
+  --particles-color: #2f343d;
+  --nav-default-color: #707070;
+  --nav-active-color: #fff;
+  --nav-mobile-color: #252a30;
+}
+
 html {
   overflow-x: hidden;
 }
@@ -115,7 +132,9 @@ body {
 
 main {
   width: 100%;
-  background: #fff;
+  transition: background-color .3s ease, color .3s ease;
+  background: var(--background-color-primary);
+  color: var(--text-primary-color);
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -132,7 +151,8 @@ main {
   width: 100%;
 }
 #particles {
-  background: #fff;
+  transition: background-color .3s ease;
+  background: var(--particles-color);
   height: 50vh;
   min-height: 250px;
   flex-grow: 1;
@@ -146,7 +166,9 @@ main {
     z-index: -1;
   }
 }
-
+#theme_buttton {
+  margin: auto 0;
+}
 .particles-js-canvas-el {
   position: absolute;
   left: 0;
@@ -156,8 +178,8 @@ main {
   flex-direction: column;
   text-align: center;
   margin-bottom: 53px;
-
   outline: none;
+
   .title {
     display: flex;
     margin: .75rem auto 0;
@@ -176,7 +198,8 @@ main {
     margin: auto;
   }
   a {
-    color: #000;
+    color: var(--text-primary-color);
+    transition: color .3s ease;
     display: contents;
   }
 }
@@ -190,30 +213,30 @@ nav {
   justify-content: space-evenly;
   width: 100%;
   height: 53px;
+  transition: background-color .3s ease;
   &.sticky {
-    background: rgb(108 135 155);
+    background: var(--nav-mobile-color);
   }
-  span {
+  & > span {
     padding: 1rem;
   }
   a {
+    color: var(--nav-default-color);
+    font-size: 1.2rem;
     &:hover {
-      color: #000;
+      color: var(--nav-active-color);
       position: relative;
-      &:after {
-        width: 100%;
-        transition: width 0.5s;
+    }
+    &#github {
+      svg {
+        fill: var(--nav-default-color);
       }
     }
-
   }
 }
 a {
   text-decoration: none;
-  color: #cecece;
-  font-size: 1.2rem;
 }
-
 
 .fade-leave-active {
   transition-duration: 0.3s;
@@ -222,7 +245,7 @@ a {
   opacity: 0;
 }
 .router-link-active {
-  color: #000;
+  color: var(--nav-active-color);
 }
 @media (min-width: 768px) {
   main {
@@ -254,13 +277,13 @@ a {
     right: -100%;
     justify-content: flex-end;
     align-items: center;
-    span {
+    & > span {
       padding: 0.25rem;
     }
     a#github {
       &:hover {
         svg {
-          fill: #000;
+          fill: var(--nav-active-color);
         }
       }
       &:after {
@@ -269,13 +292,17 @@ a {
     }
     a {
       margin: 15px;
+      &:not(.router-link-active):hover:after {
+        width: 100%;
+        transition: width 0.5s;
+      }
       &:after {
         content: "";
         position: absolute;
         bottom: -5px;
         left: 0;
         width: 0;
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid var(--nav-active-color);;
       }
     }
   }
