@@ -169,6 +169,7 @@
 
 <script>
 import Work from "../assets/svgs/work.svg"
+import {useHead} from "@vueuse/head";
 
 export default {
   name: "CVView",
@@ -181,6 +182,9 @@ export default {
     }
   },
   mounted() {
+    useHead({
+      title: "CV",
+    });
     setTimeout(function() {document.querySelector('#cv').classList.add('loaded');}, 100);
   }
 };

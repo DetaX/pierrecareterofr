@@ -43,10 +43,14 @@
 
 
 import {gsap, Power3} from "gsap";
+import {useHead} from "@vueuse/head";
 
 export default {
   name: "ProjectsView",
   mounted() {
+    useHead({
+      title: "Projets",
+    });
     let tl = gsap.timeline();
     tl.fromTo(".text-container", {opacity: 0}, { duration: 2, opacity: 1 }, 0)
         .fromTo(".project img",  {opacity: 0}, {

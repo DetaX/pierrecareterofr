@@ -33,6 +33,7 @@
 <script>
 import Github from "@/assets/svgs/github.svg";
 import ThemeButton from "@/components/ThemeButton.vue";
+import { useHead } from '@vueuse/head'
 
 export default {
   name: "App",
@@ -41,6 +42,9 @@ export default {
     ThemeButton
   },
   mounted() {
+    useHead({
+      titleTemplate: (title) => !title ? 'Pierre Caretero - Consultant informatique spécialiste du web' : `${title} - Pierre Caretero - Consultant informatique spécialiste du web`,
+  });
     window.particlesJS.load(
       "particles",
       "assets/particles.json",

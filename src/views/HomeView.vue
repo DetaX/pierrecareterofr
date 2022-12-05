@@ -18,6 +18,7 @@
 import { gsap } from "gsap";
 import Programming from "@/assets/svgs/programming.svg";
 import Typewriter from "typewriter-effect/dist/core";
+import {useHead} from "@vueuse/head";
 
 export default {
   name: "HomeView",
@@ -30,6 +31,9 @@ export default {
     };
   },
   mounted() {
+    useHead({
+      title: "À propos",
+    });
     let tl = gsap.timeline();
     tl
       .to("#presentation", { duration: 2, opacity: 1 }, 0)
