@@ -14,7 +14,7 @@
       <div class="text-container">
         <div class="title">Frogged TV</div>
         <div class="technologies">Développement Symfony + Hébergement</div>
-        <div class="description">FroggedTV est une association tourner autour du jeu vidéo Dota 2. Ils commentent sur Twitch les compétitions officiels et organisent aussi une ligue francophone.</div>
+        <div class="description">FroggedTV est une association centrée sur le jeu vidéo Dota 2. Ils commentent sur Twitch les compétitions officiels et organisent aussi une ligue francophone.</div>
       </div>
       <a href="https://frogged.tv" title="Visiter le site"><img src="/assets/froggedtv.png" alt="FroggedTV" /></a>
     </div>
