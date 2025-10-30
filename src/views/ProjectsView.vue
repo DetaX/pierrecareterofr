@@ -25,16 +25,7 @@
         <div class="technologies">Développement WordPress + Hébergement</div>
         <div class="description">Le blog gagner plus d’argent présente différentes manières de gagner de l’argent, des idées de jobs en ligne ou des astuces pratiques sur le thème de l’argent.</div>
       </div>
-      <a href="https://gagnerplusargent.fr" title="Visiter le site"><img src="/assets/gagnerplusargent.png" alt="Gagner plus d'argent" /></a>
-    </div>
-
-    <div class="project">
-      <div class="text-container">
-        <div class="title">Les trouvailles de Martyna</div>
-        <div class="technologies">Développement WordPress + Hébergement</div>
-        <div class="description">Les trouvailles de Martyna est le blog d’une jeune polonaise qui écrit sur différents sujets liés aux thèmes du voyage et du vin.</div>
-      </div>
-      <a href="https://martyna.fr" title="Visiter le site"><img src="/assets/martyna.png" alt="Les trouvailles de Martyna" /></a>
+      <a href="#"><img src="/assets/gagnerplusargent.png" alt="Gagner plus d'argent" /></a>
     </div>
   </div>
 </template>
